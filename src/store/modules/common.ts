@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setCookie,getCookie, removeCookie } from "@/utils/cookie";
 import { setLocalStorage,getLocalStorage, removeLocalStorage } from "@/utils/storage";
+import websiteConfig from "@/config/website";
 import { login } from "@/api/user";
 
 // 添加异步thunk处理登录
@@ -16,7 +17,7 @@ const commonSlice = createSlice({
   initialState: {
     userInfo: getCookie("userInfo") || null,
     token: getCookie("token") || null,
-    activeMenu: getLocalStorage("activeMenu") || "/home",
+    activeMenu: getLocalStorage("activeMenu") || websiteConfig.activeMenu,
     loading: false,
     error: "",
   },
@@ -36,6 +37,7 @@ const commonSlice = createSlice({
     logout: (state) => {
       state.userInfo = null;
       state.token = null;
+      state.activeMenu = websiteConfig.activeMenu;
       removeLocalStorage("userInfo");
       removeLocalStorage("activeMenu");
       removeCookie("token");
