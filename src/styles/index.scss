@@ -1,0 +1,17 @@
+@use "./normalize.scss";
+@use "./variables.scss";
+@use "./layout.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+}
